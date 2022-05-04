@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" style="max-height: 30px;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body  >
+    <h1 class="heading" >WITCH BALL</h1>
+    <form id="inf">
+        <label for="n" id="l1">Yesterday cases:</label>
+      <input type="number" id="n"><br>
+      <label for="p" id="l2">Yesterday Population: </label>
+       <input type="number" id="p"><br>
+       <label for="n1" id="l3">Today Cases: </label>
+       <input type="number" id="n1"><br>
+       <label for="p1" id="l4">Today Population: </label>
+       <input type="number" id="p1"><br>
+       Day you want to predict:  <input type="number" id="Nf"><br>
+       <button id="b1" onclick="calc(event)" >Calculate</button><br>
+    </form>
+    <p id="prediction"> </p>
+    
+
+<script>
+  
+  function calc(event){
+    event.preventDefault();
+    let b,epow;
+    b=(document.getElementById("p").value)/document.getElementById("n").value;
+    b=b-1;
+
+    epow=((document.getElementById("p1").value)/document.getElementById("n1").value)-1;
+    epow=epow/b;
+
+    var n;
+    n=(document.getElementById("p1").value)/(1+ b* Math.pow(epow,document.getElementById("Nf").value));
+    var final=Math.round(n);
+    document.getElementById("prediction").innerHTML="Expected cases on day "+document.getElementById("Nf").value+" is "+ final;
+}
+
+
+</script>
+</body>
+</html>
